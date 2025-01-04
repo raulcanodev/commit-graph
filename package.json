@@ -1,0 +1,39 @@
+{
+  "name": "commit-graph",
+  "version": "1.0.0",
+  "description": "React component that generates contribution/commit visualization graphs similar to GitHub contributions.",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "keywords": ["react", "component", "commit", "contribution", "github", "calendar"],
+  "author": {
+    "name": "Raul Cano",
+    "email": "raul@zenex.dev",
+    "url": "https://raulcano.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raulcanodev/commit-graph.git"
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "esbuild src/index.jsx --bundle --minify --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom",
+    "build:cjs": "esbuild src/index.jsx --bundle --minify --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom",
+    "watch": "npm run watch:esm",
+    "watch:esm": "esbuild src/index.jsx --bundle --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom --watch",
+    "watch:cjs": "esbuild src/index.jsx --bundle --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom --watch",
+    "watch:all": "concurrently \"npm run watch:esm\" \"npm run watch:cjs\""
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.20.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

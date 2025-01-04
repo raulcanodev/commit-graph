@@ -100,25 +100,24 @@ npm link commit-graph
 ```jsx
 import { ContributionGraph } from 'commit-graph';
 ```
+---
+## Contributing
 
 ### Development Workflow
-
-For the best development experience:
 
 1. In the package directory, run the build with watch mode:
 ```bash
 npm run watch
 ```
 
-2. In your test app, keep your development server running:
+2. In your react test app, keep your development server running:
 ```bash
-npm run dev  # or npm start
+npm run dev
 ```
+By doing this, you can see the changes in real-time.
 
-When you make changes to the package:
-- The watch mode will automatically rebuild
-- Your test app will update with the changes
-- If changes aren't reflecting, try unlinking and relinking:
+
+If changes aren't reflecting, try unlinking and relinking:
 ```bash
 npm unlink commit-graph
 npm link commit-graph
@@ -126,8 +125,8 @@ npm link commit-graph
 
 ## GitHub Token
 
-To use this component, you need a GitHub Personal Access Token with the `read:user` scope. You can create one at: https://github.com/settings/tokens
+To use this component, you need a GitHub Personal Access Token with the `read:user` scope. You can create one at: https://github.com/settings/tokens?type=beta
 
 ## License
 
-MIT © [Your Name]# commit-graph
+MIT © Raul Cano commit-graph
