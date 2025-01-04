@@ -1,1 +1,2 @@
-export { default as ContributionGraph } from './ContributionGraph';
+export { default as ContributionGraph } from './components/ContributionGraph';
+export { themes } from './constants/themes';

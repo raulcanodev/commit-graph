@@ -1,5 +1,7 @@
-// src/ContributionGraph.jsx
+// src/components/ContributionGraph.jsx
 import React, { useState, useEffect } from "react";
+
+// src/constants/themes.js
 var themes = {
   light: {
     background: "#ffffff",
@@ -28,6 +30,101 @@ var themes = {
     }
   }
 };
+
+// src/api/github.js
+var GITHUB_API_URL = "https://api.github.com/graphql";
+var CONTRIBUTIONS_QUERY = `
+  query($username: String!) {
+    user(login: $username) {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            contributionDays {
+              contributionCount
+              date
+              weekday
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+var fetchGithubContributions = async (username, token) => {
+  if (!username || !token) {
+    throw new Error("Please provide both username and token");
+  }
+  const response = await fetch(GITHUB_API_URL, {
+    method: "POST",
+    headers: {
+      "Authorization": `bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      query: CONTRIBUTIONS_QUERY,
+      variables: { username }
+    })
+  });
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const result = await response.json();
+  if (result.errors) {
+    throw new Error(result.errors[0].message);
+  }
+  const contributionData = result.data?.user?.contributionsCollection?.contributionCalendar;
+  if (!contributionData) {
+    throw new Error("No contribution data found");
+  }
+  return contributionData;
+};
+
+// src/styles/contributionGraph.js
+var styles = {
+  container: {
+    maxWidth: "100%",
+    overflowX: "auto",
+    padding: "8px",
+    borderRadius: "6px"
+  },
+  graphWrapper: {
+    display: "inline-flex",
+    flexDirection: "column",
+    gap: "4px"
+  },
+  row: {
+    display: "flex",
+    gap: "4px"
+  },
+  square: {
+    width: "12px",
+    height: "12px",
+    borderRadius: "2px",
+    transition: "background-color 0.2s ease"
+  },
+  loading: (theme) => ({
+    color: theme.loading
+  }),
+  error: (theme) => ({
+    color: theme.error
+  })
+};
+
+// src/utils/colorDots.js
+var getColorForDots = (count, colorScheme) => {
+  if (count === 0)
+    return colorScheme[0];
+  if (count <= 3)
+    return colorScheme[1];
+  if (count <= 6)
+    return colorScheme[2];
+  if (count <= 9)
+    return colorScheme[3];
+  return colorScheme[4];
+};
+
+// src/components/ContributionGraph.jsx
 var ContributionGraph = ({
   username,
   token,
@@ -41,52 +138,10 @@ var ContributionGraph = ({
   const currentTheme = themes[theme] || themes.light;
   const colorScheme = customColorScheme || currentTheme.colorScheme;
   useEffect(() => {
-    const fetchContributions = async () => {
-      if (!username || !token) {
-        setError("Please provide both username and token");
-        setLoading(false);
-        return;
-      }
+    const getContributions = async () => {
       try {
-        const response = await fetch("https://api.github.com/graphql", {
-          method: "POST",
-          headers: {
-            "Authorization": `bearer ${token}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            query: `
-              query {
-                user(login: "${username}") {
-                  contributionsCollection {
-                    contributionCalendar {
-                      totalContributions
-                      weeks {
-                        contributionDays {
-                          contributionCount
-                          date
-                          weekday
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            `
-          })
-        });
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const result = await response.json();
-        if (result.errors) {
-          throw new Error(result.errors[0].message);
-        }
-        const contributionData = result.data?.user?.contributionsCollection?.contributionCalendar;
-        if (!contributionData) {
-          throw new Error("No contribution data found");
-        }
-        setContributions(contributionData);
+        const data = await fetchGithubContributions(username, token);
+        setContributions(data);
         setLoading(false);
       } catch (err) {
         setError(err.message || "Failed to fetch contribution data");
@@ -94,23 +149,12 @@ var ContributionGraph = ({
         console.error("Error fetching contributions:", err);
       }
     };
-    fetchContributions();
+    getContributions();
   }, [username, token]);
-  const getColorForCount = (count) => {
-    if (count === 0)
-      return colorScheme[0];
-    if (count <= 3)
-      return colorScheme[1];
-    if (count <= 6)
-      return colorScheme[2];
-    if (count <= 9)
-      return colorScheme[3];
-    return colorScheme[4];
-  };
   if (loading && showLoadingState)
-    return /* @__PURE__ */ React.createElement("div", { style: { color: currentTheme.loading } }, "Loading contributions...");
+    return /* @__PURE__ */ React.createElement("div", { style: styles.loading(currentTheme) }, "Loading contributions...");
   if (error)
-    return /* @__PURE__ */ React.createElement("div", { style: { color: currentTheme.error } }, error);
+    return /* @__PURE__ */ React.createElement("div", { style: styles.error(currentTheme) }, error);
   const days = Array(7).fill(null);
   const transposedData = days.map(
     (_, dayIndex) => contributions.weeks?.map(
@@ -118,25 +162,15 @@ var ContributionGraph = ({
     ).filter(Boolean)
   );
   return /* @__PURE__ */ React.createElement("div", { style: {
-    maxWidth: "100%",
-    overflowX: "auto",
-    backgroundColor: currentTheme.background,
-    padding: "8px",
-    borderRadius: "6px"
-  } }, /* @__PURE__ */ React.createElement("div", { style: {
-    display: "inline-flex",
-    flexDirection: "column",
-    gap: "4px"
-  } }, transposedData.map((row, rowIndex) => /* @__PURE__ */ React.createElement("div", { key: rowIndex, style: { display: "flex", gap: "4px" } }, row.map((day, dayIndex) => /* @__PURE__ */ React.createElement(
+    ...styles.container,
+    backgroundColor: currentTheme.background
+  } }, /* @__PURE__ */ React.createElement("div", { style: styles.graphWrapper }, transposedData.map((row, rowIndex) => /* @__PURE__ */ React.createElement("div", { key: rowIndex, style: styles.row }, row.map((day, dayIndex) => /* @__PURE__ */ React.createElement(
     "div",
     {
       key: `${rowIndex}-${dayIndex}`,
       style: {
-        width: "12px",
-        height: "12px",
-        borderRadius: "2px",
-        backgroundColor: getColorForCount(day.contributionCount),
-        transition: "background-color 0.2s ease"
+        ...styles.square,
+        backgroundColor: getColorForDots(day.contributionCount, colorScheme)
       },
       title: `${day.date}: ${day.contributionCount} contributions`
     }
@@ -144,5 +178,6 @@ var ContributionGraph = ({
 };
 var ContributionGraph_default = ContributionGraph;
 export {
-  ContributionGraph_default as ContributionGraph
+  ContributionGraph_default as ContributionGraph,
+  themes
 };
