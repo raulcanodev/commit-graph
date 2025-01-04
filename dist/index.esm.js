@@ -103,11 +103,25 @@ var styles = {
     borderRadius: "2px",
     transition: "background-color 0.2s ease"
   },
-  loading: (theme) => ({
-    color: theme.loading
-  }),
+  loading: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px",
+    minHeight: "100px"
+  },
+  spinner: {
+    display: "inline-block",
+    width: "30px",
+    height: "30px",
+    position: "relative"
+  },
   error: (theme) => ({
-    color: theme.error
+    color: theme.error,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px"
   })
 };
 
@@ -128,9 +142,9 @@ var getColorForDots = (count, colorScheme) => {
 var ContributionGraph = ({
   username,
   token,
-  theme = "light",
+  theme = "dark",
   customColorScheme,
-  showLoadingState = true
+  loadingComponent = ""
 }) => {
   const [contributions, setContributions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -151,10 +165,12 @@ var ContributionGraph = ({
     };
     getContributions();
   }, [username, token]);
-  if (loading && showLoadingState)
-    return /* @__PURE__ */ React.createElement("div", { style: styles.loading(currentTheme) }, "Loading contributions...");
-  if (error)
+  if (loading) {
+    return loadingComponent;
+  }
+  if (error) {
     return /* @__PURE__ */ React.createElement("div", { style: styles.error(currentTheme) }, error);
+  }
   const days = Array(7).fill(null);
   const transposedData = days.map(
     (_, dayIndex) => contributions.weeks?.map(

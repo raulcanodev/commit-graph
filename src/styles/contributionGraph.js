@@ -1,4 +1,3 @@
-
 export const styles = {
   container: {
     maxWidth: '100%',
@@ -21,10 +20,24 @@ export const styles = {
     borderRadius: '2px',
     transition: 'background-color 0.2s ease'
   },
-  loading: theme => ({
-    color: theme.loading
-  }),
+  loading: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '20px',
+    minHeight: '100px'
+  },
+  spinner: {
+    display: 'inline-block',
+    width: '30px',
+    height: '30px',
+    position: 'relative'
+  },
   error: theme => ({
-    color: theme.error
+    color: theme.error,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '20px'
   })
 };

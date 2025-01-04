@@ -1,6 +1,6 @@
 # Commit Graph
 
-A React component that generates contribution/commit visualization graphs similar to those found on code hosting platforms. Perfect for portfolios and activity tracking.
+React component that generates contribution/commit visualization graphs similar to GitHub contributions. Perfect for portfolios and activity tracking.
 
 ![npm version](https://img.shields.io/npm/v/commit-graph)
 ![license](https://img.shields.io/npm/l/commit-graph)
@@ -29,7 +29,7 @@ function App() {
     <ContributionGraph 
       username="your-github-username"
       token="your-github-token"
-      theme="light" // or "dark"
+      theme="dark" // or "light"
     />
   );
 }
@@ -43,7 +43,7 @@ function App() {
 | `token` | string | required | GitHub personal access token |
 | `theme` | 'light' \| 'dark' | 'light' | Color theme |
 | `customColorScheme` | object | null | Custom color configuration |
-| `showLoadingState` | boolean | true | Show loading indicator |
+| `loadingComponent` | ReactNode | null | Custom loading component |
 
 ### Custom Color Scheme
 
@@ -101,7 +101,6 @@ npm link commit-graph
 import { ContributionGraph } from 'commit-graph';
 ```
 ---
-## Contributing
 
 ### Development Workflow
 

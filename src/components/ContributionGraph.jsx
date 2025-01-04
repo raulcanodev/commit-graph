@@ -7,9 +7,9 @@ import { getColorForDots } from '../utils/colorDots';
 const ContributionGraph = ({
   username,
   token,
-  theme = 'light',
+  theme = 'dark',
   customColorScheme,
-  showLoadingState = true
+  loadingComponent = ""
 }) => {
   const [contributions, setContributions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,10 +34,13 @@ const ContributionGraph = ({
     getContributions();
   }, [username, token]);
 
-  if (loading && showLoadingState) 
-    return <div style={styles.loading(currentTheme)}>Loading contributions...</div>;
-  if (error) 
+  if (loading) {
+    return loadingComponent;
+  }
+  
+  if (error) {
     return <div style={styles.error(currentTheme)}>{error}</div>;
+  }
 
   const days = Array(7).fill(null);
   const transposedData = days.map((_, dayIndex) => 
