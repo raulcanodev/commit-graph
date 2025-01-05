@@ -24,5 +24,6 @@ declare module '@raulcanodev/react-github-dots' {
     loadingComponent?: React.ReactNode;
   }
 
-  export const ContributionGraph: React.FC<ContributionGraphProps>;
+  const ContributionGraph: React.FC<ContributionGraphProps>;
+  export default ContributionGraph;
 }
