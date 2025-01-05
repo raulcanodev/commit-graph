@@ -52,8 +52,11 @@ var CONTRIBUTIONS_QUERY = `
   }
 `;
 var fetchGithubContributions = async (username, token) => {
-  if (!username || !token) {
-    throw new Error("Please provide both username and token");
+  if (!username) {
+    throw new Error("Please provide the Github username");
+  }
+  if (!token) {
+    throw new Error("Please provide the Github personal token");
   }
   const response = await fetch(GITHUB_API_URL, {
     method: "POST",
@@ -85,7 +88,10 @@ var styles = {
   container: {
     maxWidth: "100%",
     overflowX: "auto",
-    padding: "8px",
+    paddingBottom: "8px",
+    paddingTop: "2.4px",
+    paddingLeft: "8px",
+    paddingRight: "8px",
     borderRadius: "6px"
   },
   graphWrapper: {
@@ -109,12 +115,6 @@ var styles = {
     justifyContent: "center",
     padding: "20px",
     minHeight: "100px"
-  },
-  spinner: {
-    display: "inline-block",
-    width: "30px",
-    height: "30px",
-    position: "relative"
   },
   error: (theme) => ({
     color: theme.error,

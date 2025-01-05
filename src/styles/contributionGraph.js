@@ -2,7 +2,10 @@ export const styles = {
   container: {
     maxWidth: '100%',
     overflowX: 'auto',
-    padding: '8px',
+    paddingBottom: '8px',
+    paddingTop: '2.4px',
+    paddingLeft: '8px',
+    paddingRight: '8px',
     borderRadius: '6px'
   },
   graphWrapper: {
@@ -26,12 +29,6 @@ export const styles = {
     justifyContent: 'center',
     padding: '20px',
     minHeight: '100px'
-  },
-  spinner: {
-    display: 'inline-block',
-    width: '30px',
-    height: '30px',
-    position: 'relative'
   },
   error: theme => ({
     color: theme.error,

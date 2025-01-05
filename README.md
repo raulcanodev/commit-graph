@@ -116,7 +116,7 @@ npm run dev
 By doing this, you can see the changes in real-time.
 
 
-If changes aren't reflecting, try unlinking and relinking:
+If changes aren't reflecting, try unlinking and relinking in the react test app:
 ```bash
 npm unlink commit-graph
 npm link commit-graph

@@ -5,8 +5,17 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
-  "keywords": ["react", "component", "commit", "contribution", "github", "calendar"],
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "component",
+    "commit",
+    "contribution",
+    "github",
+    "calendar"
+  ],
   "author": {
     "name": "Raul Cano",
     "email": "raul@zenex.dev",
@@ -19,11 +28,11 @@
   },
   "scripts": {
     "build": "npm run build:esm && npm run build:cjs",
-    "build:esm": "esbuild src/index.jsx --bundle --minify --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom",
-    "build:cjs": "esbuild src/index.jsx --bundle --minify --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom",
+    "build:esm": "esbuild src/index.jsx --bundle --minify --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom",
+    "build:cjs": "esbuild src/index.jsx --bundle --minify --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom",
     "watch": "npm run watch:esm",
-    "watch:esm": "esbuild src/index.jsx --bundle --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom --watch",
-    "watch:cjs": "esbuild src/index.jsx --bundle --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --external:react --external:react-dom --watch",
+    "watch:esm": "esbuild src/index.jsx --bundle --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom --watch",
+    "watch:cjs": "esbuild src/index.jsx --bundle --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom --watch",
     "watch:all": "concurrently \"npm run watch:esm\" \"npm run watch:cjs\""
   },
   "peerDependencies": {

@@ -20,8 +20,12 @@ const CONTRIBUTIONS_QUERY = `
 `;
 
 export const fetchGithubContributions = async (username, token) => {
-  if (!username || !token) {
-    throw new Error('Please provide both username and token');
+  if (!username) {
+    throw new Error('Please provide the Github username')
+  }
+
+  if (!token) {
+    throw new Error('Please provide the Github personal token')
   }
 
   const response = await fetch(GITHUB_API_URL, {
