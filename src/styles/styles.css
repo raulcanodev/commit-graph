@@ -1,0 +1,69 @@
+.contribution-graph {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 8px;
+  border-radius: 6px;
+  /* Add these to remove potential extra space */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.contribution-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  /* Add this to prevent stretching */
+  flex-shrink: 0;
+}
+
+.contribution-row {
+  display: flex;
+  gap: 4px;
+  /* Add this to prevent row stretching */
+  flex-shrink: 0;
+}
+
+.contribution-square {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+  /* Add this to force aspect ratio */
+  aspect-ratio: 1;
+  /* Add this to prevent square stretching */
+  flex-shrink: 0;
+}
+
+.contribution-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100px;
+}
+
+.contribution-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+@media (max-width: 640px) {
+  .contribution-graph {
+    padding: 4px;
+  }
+  
+  .contribution-wrapper {
+    gap: 2px;
+  }
+  
+  .contribution-row {
+    gap: 2px;
+  }
+  
+  .contribution-square {
+    width: 8px;
+    height: 8px;
+  }
+}
