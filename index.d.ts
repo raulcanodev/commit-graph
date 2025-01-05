@@ -1,29 +1,11 @@
 declare module '@raulcanodev/react-github-dots' {
-  import React from 'react';
-
-  type Theme = 'dark' | 'light' | string;
-
-  interface ContributionDay {
-    date: string;
-    contributionCount: number;
-  }
-
-  interface Week {
-    contributionDays: ContributionDay[];
-  }
-
-  interface Contributions {
-    weeks: Week[];
-  }
-
-  interface ContributionGraphProps {
+  export interface ContributionGraphProps {
     username: string;
-    token: string;
-    theme?: Theme;
+    token?: string;
+    theme?: 'dark' | 'light' | string;
     customColorScheme?: string[];
     loadingComponent?: React.ReactNode;
   }
 
-  const ContributionGraph: React.FC<ContributionGraphProps>;
-  export default ContributionGraph;
+  export default function ContributionGraph(props: ContributionGraphProps): JSX.Element;
 }

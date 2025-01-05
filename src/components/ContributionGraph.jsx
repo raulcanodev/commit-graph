@@ -1,10 +1,9 @@
+'use client';
 import * as React from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
 import { getColorForDots } from '../utils/colorDots';
 import '../styles/styles.css'
-
-const { useState, useEffect } = React;
 
 const ContributionGraph = ({
   username,
@@ -13,14 +12,14 @@ const ContributionGraph = ({
   customColorScheme,
   loadingComponent = ""
 }) => {
-  const [contributions, setContributions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [contributions, setContributions] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
   const currentTheme = themes[theme] || themes.light;
   const colorScheme = customColorScheme || currentTheme.colorScheme;
 
-  useEffect(() => {
+  React.useEffect(() => {
     const getContributions = async () => {
       try {
         const data = await fetchGithubContributions(username, token);
@@ -37,16 +36,16 @@ const ContributionGraph = ({
   }, [username, token]);
 
   if (loading) {
-    return loadingComponent;
+    return loadingComponent || null;
   }
   
   if (error) {
-    return <div style={styles.error(currentTheme)}>{error}</div>;
+    return <div style={{ color: currentTheme.error }}>{error}</div>;
   }
 
   const days = Array(7).fill(null);
   const transposedData = days.map((_, dayIndex) => 
-    contributions.weeks?.map(week => 
+    (contributions.weeks || []).map(week => 
       week.contributionDays.find(day => new Date(day.date).getDay() === dayIndex) || null
     ).filter(Boolean)
   );
@@ -60,8 +59,8 @@ const ContributionGraph = ({
               <div
                 key={`${rowIndex}-${dayIndex}`}
                 className="contribution-square"
-                style={{ backgroundColor: getColorForDots(day.contributionCount, colorScheme) }}
-                title={`${day.date}: ${day.contributionCount} contributions`}
+                style={{ backgroundColor: getColorForDots(day?.contributionCount || 0, colorScheme) }}
+                title={day ? `${day.date}: ${day.contributionCount} contributions` : ''}
               />
             ))}
           </div>
