@@ -4,14 +4,15 @@
   "description": "React component that generates contribution/commit visualization graphs similar to GitHub contributions.",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
-      "types": "./index.d.ts"
+      "default": "./dist/index.umd.js"
     }
   },
-  "types": "./index.d.ts",
   "files": [
     "dist",
     "index.d.ts"
@@ -41,8 +42,8 @@
     "watch": "vite build --watch --mode development"
   },
   "peerDependencies": {
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

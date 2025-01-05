@@ -17,7 +17,7 @@ export default defineConfig(({ command }) => {
     ],
     build: {
       lib: {
-        entry: resolve(__dirname, 'src/index.jsx'),
+        entry: resolve(__dirname, 'src/index.js'),
         name: "ReactGithubDots",
         formats: ['es', 'umd'],
         fileName: (format) => `index.${format}.js`
