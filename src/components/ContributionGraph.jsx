@@ -1,4 +1,3 @@
-'use client'
 import * as React from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
