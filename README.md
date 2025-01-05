@@ -2,8 +2,8 @@
 
 Hey! 👋 This is a React component that creates the GitHub's green dots contribution graph. Perfect for spicing up your portfolio or tracking activity in a visually appealing way!
 
-![npm version](https://img.shields.io/npm/v/react-github-dots)
-![license](https://img.shields.io/npm/l/react-github-dots)
+![npm version](https://img.shields.io/npm/v/@raulcanodev/react-github-dots)
+![license](https://img.shields.io/npm/l/@raulcanodev/react-github-dots)
 
 ## ✨ What's Cool?
 
@@ -16,14 +16,15 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 ## 🚀 Getting Started
 
 Pop this into your terminal:
+
 ```bash
-npm install react-github-dots
+npm install @raulcanodev/react-github-dots
 ```
 
 ## 💻 Show Me the Code!
 
 ```jsx
-import { ContributionGraph } from 'react-github-dots';
+import { ContributionGraph } from '@raulcanodev/react-github-dots';
 
 function App() {
   return (
@@ -71,17 +72,20 @@ Want your own color scheme? Here's how:
 ### Getting Set Up
 
 1. Grab the code:
+
 ```bash
-git clone https://github.com/yourusername/react-github-dots.git
+git clone https://github.com/raulcanodev/react-github-dots.git
 cd react-github-dots
 ```
 
 2. Install what you need:
+
 ```bash
 npm install
 ```
 
 3. Build it:
+
 ```bash
 npm run watch
 ```
@@ -89,21 +93,24 @@ npm run watch
 ### 🧪 Testing Locally
 
 1. Link your package locally, which allows you to test it in other projects:
+
 ```bash
 npm link
 ```
 
 2. Create a new React app and link the component:
+
 ```bash
 npx create-react-app test-github-dots
 cd test-github-dots
 npm install react react-dom
-npm link react-github-dots
+npm link @raulcanodev/react-github-dots
 ```
 
 3. In your App.jsx, import and use:
+
 ```jsx
-import { ContributionGraph } from 'react-github-dots';
+import { ContributionGraph } from '@raulcanodev/react-github-dots';
 ```
 
 ### 🔄 Development Flow
@@ -111,19 +118,22 @@ import { ContributionGraph } from 'react-github-dots';
 Want to see changes in real-time? Here's how:
 
 1. In your package directory:
+
 ```bash
 npm run watch
 ```
 
 2. In your test app:
+
 ```bash
 npm run dev
 ```
 
 Need to refresh the link for any bug? Try:
+
 ```bash
-npm unlink react-github-dots
-npm link react-github-dots
+npm unlink @raulcanodev/react-github-dots
+npm link @raulcanodev/react-github-dots
 ```
 
 ## 🔑 Getting Your GitHub Token
