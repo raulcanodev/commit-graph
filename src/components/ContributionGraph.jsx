@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
-import { styles } from '../styles/contributionGraph';
+// import { styles } from '../styles/contributionGraph';
 import { getColorForDots } from '../utils/colorDots';
+import '../styles/styles.css'
 
 const ContributionGraph = ({
   username,
@@ -50,20 +51,15 @@ const ContributionGraph = ({
   );
 
   return (
-    <div style={{
-      ...styles.container,
-      backgroundColor: currentTheme.background
-    }}>
-      <div style={styles.graphWrapper}>
+    <div className="contribution-graph" style={{ backgroundColor: currentTheme.background }}>
+      <div className="contribution-wrapper">
         {transposedData.map((row, rowIndex) => (
-          <div key={rowIndex} style={styles.row}>
+          <div key={rowIndex} className="contribution-row">
             {row.map((day, dayIndex) => (
               <div
                 key={`${rowIndex}-${dayIndex}`}
-                style={{
-                  ...styles.square,
-                  backgroundColor: getColorForDots(day.contributionCount, colorScheme)
-                }}
+                className="contribution-square"
+                style={{ backgroundColor: getColorForDots(day.contributionCount, colorScheme) }}
                 title={`${day.date}: ${day.contributionCount} contributions`}
               />
             ))}

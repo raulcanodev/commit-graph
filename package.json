@@ -2,8 +2,14 @@
   "name": "commit-graph",
   "version": "1.0.0",
   "description": "React component that generates contribution/commit visualization graphs similar to GitHub contributions.",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "./dist/contribution-graph.umd.js",
+  "module": "./dist/contribution-graph.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/contribution-graph.es.js",
+      "require": "./dist/contribution-graph.umd.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -27,22 +33,22 @@
     "url": "https://github.com/raulcanodev/commit-graph.git"
   },
   "scripts": {
-    "build": "npm run build:esm && npm run build:cjs",
-    "build:esm": "esbuild src/index.jsx --bundle --minify --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom",
-    "build:cjs": "esbuild src/index.jsx --bundle --minify --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom",
-    "watch": "npm run watch:esm",
-    "watch:esm": "esbuild src/index.jsx --bundle --format=esm --platform=browser --outfile=dist/index.esm.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom --watch",
-    "watch:cjs": "esbuild src/index.jsx --bundle --format=cjs --platform=browser --outfile=dist/index.js --loader:.js=jsx --loader:.jsx=jsx --loader:.css=css --external:react --external:react-dom --watch",
-    "watch:all": "concurrently \"npm run watch:esm\" \"npm run watch:cjs\""
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "watch": "vite build --watch --mode development"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^8.2.2",
     "esbuild": "^0.20.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite": "^6.0.7",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
   }
 }
