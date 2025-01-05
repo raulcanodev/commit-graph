@@ -1,36 +1,46 @@
+:root {
+  --contribution-square-size: 12px;
+  --contribution-gap: 4px;
+  --contribution-padding: 8px;
+  --contribution-border-radius: 6px;
+  --contribution-square-border-radius: 2px;
+  --contribution-min-width: 320px;
+  --contribution-transition-duration: 0.2s;
+  --contribution-loading-height: 100px;
+  --contribution-loading-padding: 20px;
+}
+
 .contribution-graph {
   max-width: 100%;
+  min-width: var(--contribution-min-width);
   overflow-x: auto;
-  padding: 8px;
-  border-radius: 6px;
-  /* Add these to remove potential extra space */
-  display: flex;
-  justify-content: flex-start;
+  padding: var(--contribution-padding);
+  border-radius: var(--contribution-border-radius);
+  display: block;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .contribution-wrapper {
   display: inline-flex;
   flex-direction: column;
-  gap: 4px;
-  /* Add this to prevent stretching */
-  flex-shrink: 0;
+  gap: var(--contribution-gap);
+  max-width: 100%;
+  /* Prevent content from being squished */
+  min-width: fit-content;
 }
 
 .contribution-row {
   display: flex;
-  gap: 4px;
-  /* Add this to prevent row stretching */
+  gap: var(--contribution-gap);
   flex-shrink: 0;
 }
 
 .contribution-square {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  transition: background-color 0.2s ease;
-  /* Add this to force aspect ratio */
+  width: var(--contribution-square-size);
+  height: var(--contribution-square-size);
+  border-radius: var(--contribution-square-border-radius);
+  transition: background-color var(--contribution-transition-duration) ease;
   aspect-ratio: 1;
-  /* Add this to prevent square stretching */
   flex-shrink: 0;
 }
 
@@ -38,32 +48,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  min-height: 100px;
+  padding: var(--contribution-loading-padding);
+  min-height: var(--contribution-loading-height);
 }
 
 .contribution-error {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: var(--contribution-loading-padding);
 }
 
 @media (max-width: 640px) {
-  .contribution-graph {
-    padding: 4px;
-  }
-  
-  .contribution-wrapper {
-    gap: 2px;
-  }
-  
-  .contribution-row {
-    gap: 2px;
-  }
-  
-  .contribution-square {
-    width: 8px;
-    height: 8px;
+  :root {
+    --contribution-square-size: 8px;
+    --contribution-gap: 2px;
+    --contribution-padding: 4px;
   }
 }
