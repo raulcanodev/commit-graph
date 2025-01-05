@@ -12,9 +12,7 @@ export default defineConfig(({ command }) => {
   }
   return {
     plugins: [
-      react({
-        jsxRuntime: 'classic', // Use classic JSX transform
-      }),
+      react(),
       cssInjectedByJsPlugin(),
     ],
     build: {
