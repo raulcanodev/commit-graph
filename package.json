@@ -1,5 +1,5 @@
 {
-  "name": "commit-graph",
+  "name": "react-github-dots",
   "version": "1.0.0",
   "description": "React component that generates contribution/commit visualization graphs similar to GitHub contributions.",
   "main": "./dist/index.umd.js",
@@ -30,7 +30,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/raulcanodev/commit-graph.git"
+    "url": "https://github.com/raulcanodev/react-github-dots.git"
   },
   "scripts": {
     "build": "vite build",

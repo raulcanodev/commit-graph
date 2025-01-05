@@ -1,28 +1,29 @@
-# Commit Graph
+# ✨ React GitHub Dots
 
-React component that generates contribution/commit visualization graphs similar to GitHub contributions. Perfect for portfolios and activity tracking.
+Hey! 👋 This is a React component that creates the GitHub's green dots contribution graph. Perfect for spicing up your portfolio or tracking activity in a visually appealing way!
 
-![npm version](https://img.shields.io/npm/v/commit-graph)
-![license](https://img.shields.io/npm/l/commit-graph)
+![npm version](https://img.shields.io/npm/v/react-github-dots)
+![license](https://img.shields.io/npm/l/react-github-dots)
 
-## Features
+## ✨ What's Cool?
 
-- 📊 GitHub-style contribution graph
-- 🌓 Light and dark theme support
-- 🎨 Customizable color schemes
-- 🔄 Real-time GitHub data integration
-- 📱 Responsive design
+- 📊 Beautiful GitHub-style contribution visualization
+- 🌓 Seamless light and dark mode support
+- 🎨 Make it yours with custom color schemes
+- 🔄 Real-time GitHub data at your fingertips
+- 📱 Looks great on any screen size
 
-## Installation
+## 🚀 Getting Started
 
+Pop this into your terminal:
 ```bash
-npm install commit-graph
+npm install react-github-dots
 ```
 
-## Usage
+## 💻 Show Me the Code!
 
 ```jsx
-import { ContributionGraph } from 'commit-graph';
+import { ContributionGraph } from 'react-github-dots';
 
 function App() {
   return (
@@ -35,19 +36,21 @@ function App() {
 }
 ```
 
-### Props
+## 🎛 Configuration Options
 
-| Prop | Type | Default | Description |
+Here's what you can tweak:
+
+| Prop | Type | Default | What it does |
 |------|------|---------|-------------|
-| `username` | string | required | GitHub username |
-| `token` | string | required | GitHub personal access token |
-| `theme` | 'light' \| 'dark' | 'light' | Color theme |
-| `customColorScheme` | object | null | Custom color configuration |
-| `loadingComponent` | ReactNode | null | Custom loading component |
+| `username` | string | required | Your GitHub username |
+| `token` | string | required | Your GitHub access token |
+| `theme` | 'light' \| 'dark' | 'light' | Pick your style |
+| `customColorScheme` | object | null | Want custom colors? Go wild! |
+| `loadingComponent` | ReactNode | null | Custom loading state? Sure! |
 
-### Custom Color Scheme
+### 🎨 Customize The Dot Colors
 
-You can provide your own color scheme:
+Want your own color scheme? Here's how:
 
 ```jsx
 <ContributionGraph 
@@ -63,69 +66,76 @@ You can provide your own color scheme:
 />
 ```
 
-## Development
+## 🛠 Development & Contributions
 
-### Setup
+### Getting Set Up
 
-1. Clone the repository:
+1. Grab the code:
 ```bash
-git clone https://github.com/yourusername/commit-graph.git
-cd commit-graph
+git clone https://github.com/yourusername/react-github-dots.git
+cd react-github-dots
 ```
 
-2. Install dependencies:
+2. Install what you need:
 ```bash
 npm install
 ```
 
-3. Build the package:
-```bash
-npm run build
-```
-
-### Testing with a Local React App
-
-1. In the package directory, link the package:
-```bash
-npm link
-```
-
-2. Create a test React app and link to the package:
-```bash
-cd your-test-app
-npm link commit-graph
-```
-
-3. Use the component in your test app:
-```jsx
-import { ContributionGraph } from 'commit-graph';
-```
----
-
-### Development Workflow
-
-1. In the package directory, run the build with watch mode:
+3. Build it:
 ```bash
 npm run watch
 ```
 
-2. In your react test app, keep your development server running:
+### 🧪 Testing Locally
+
+1. Link your package locally, which allows you to test it in other projects:
+```bash
+npm link
+```
+
+2. Create a new React app and link the component:
+```bash
+npx create-react-app test-github-dots
+cd test-github-dots
+npm install react react-dom
+npm link react-github-dots
+```
+
+3. In your App.jsx, import and use:
+```jsx
+import { ContributionGraph } from 'react-github-dots';
+```
+
+### 🔄 Development Flow
+
+Want to see changes in real-time? Here's how:
+
+1. In your package directory:
+```bash
+npm run watch
+```
+
+2. In your test app:
 ```bash
 npm run dev
 ```
-By doing this, you can see the changes in real-time.
 
-
-If changes aren't reflecting, try unlinking and relinking in the react test app:
+Need to refresh the link for any bug? Try:
 ```bash
-npm unlink commit-graph
-npm link commit-graph
+npm unlink react-github-dots
+npm link react-github-dots
 ```
 
-## GitHub Token
+## 🔑 Getting Your GitHub Token
 
-To use this component, you need a GitHub Personal Access Token with the `read:user` scope. You can create one at: https://github.com/settings/tokens?type=beta
+You'll need a GitHub Personal Access Token with `read:user` scope. Get one here: https://github.com/settings/tokens?type=beta
 
-## License
+## 📝 License
 
-MIT © Raul Cano commit-graph
+MIT © Raul Cano
+
+---
+
+Made with ❤️ by Raul Cano. Questions? Issues? Feel free to reach out!
+
+Want to contribute? PRs are always welcome! 🙌
