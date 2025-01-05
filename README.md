@@ -18,14 +18,12 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 
 ## 🚀 Getting Started
 
-Pop this into your terminal:
+1. Pop this into your terminal:
 
 ```bash
 npm install @raulcanodev/react-github-dots
 ```
-
-## 💻 Show Me the Code!
-
+2. Within your react app:
 ```jsx
 import { ContributionGraph } from '@raulcanodev/react-github-dots';
 
