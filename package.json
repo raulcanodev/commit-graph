@@ -10,10 +10,9 @@
       "require": "./dist/index.umd.js"
     }
   },
-  "types": "index.d.ts",
+  "types": ".dist/index.d.ts",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "keywords": [
     "react",

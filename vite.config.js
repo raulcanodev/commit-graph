@@ -13,12 +13,12 @@ export default defineConfig(({ command }) => {
   return {
     plugins: [
       react(),
-      cssInjectedByJsPlugin()
+      cssInjectedByJsPlugin(),
     ],
     build: {
       lib: {
         entry: resolve(__dirname, 'src/index.jsx'),
-        name: 'CommitGraph',
+        name: "ReactGithubDots",
         formats: ['es', 'umd'],
         fileName: (format) => `index.${format}.js`
       },
