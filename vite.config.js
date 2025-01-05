@@ -28,8 +28,20 @@ export default defineConfig(({ command }) => {
           globals: {
             react: 'React',
             'react-dom': 'ReactDOM'
-          }
+          },
+          exports: 'named',
+          format: 'umd',
+          inlineDynamicImports: true
         }
+      },
+      commonjsOptions: {
+        include: [/node_modules/],
+        requireReturnsDefault: 'auto'
+      }
+    },
+    resolve: {
+      alias: {
+        react: resolve(__dirname, './node_modules/react')
       }
     }
   };

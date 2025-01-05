@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
 import { getColorForDots } from '../utils/colorDots';
 import '../styles/styles.css'
+
+const { useState, useEffect } = React;
 
 const ContributionGraph = ({
   username,

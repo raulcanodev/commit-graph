@@ -33,7 +33,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/raulcanodev/react-github-dots.git"
+    "url": "git+https://github.com/raulcanodev/react-github-dots.git"
   },
   "scripts": {
     "build": "vite build",
