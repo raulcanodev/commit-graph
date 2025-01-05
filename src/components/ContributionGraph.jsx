@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
 import { getColorForDots } from '../utils/colorDots';
-import '../styles/styles.css'
+import '../styles/styles.css';
 
 const ContributionGraph = ({
   username,
@@ -11,6 +11,7 @@ const ContributionGraph = ({
   customColorScheme,
   loadingComponent = ""
 }) => {
+  const [isClient, setIsClient] = useState(false);
   const [contributions, setContributions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,6 +20,8 @@ const ContributionGraph = ({
   const colorScheme = customColorScheme || currentTheme.colorScheme;
 
   useEffect(() => {
+    setIsClient(true);
+
     const getContributions = async () => {
       try {
         const data = await fetchGithubContributions(username, token);
@@ -31,13 +34,19 @@ const ContributionGraph = ({
       }
     };
 
-    getContributions();
-  }, [username, token]);
+    if (isClient) {
+      getContributions();
+    }
+  }, [username, token, isClient]);
+
+  if (!isClient) {
+    return null;
+  }
 
   if (loading) {
     return loadingComponent;
   }
-  
+
   if (error) {
     return <div style={styles.error(currentTheme)}>{error}</div>;
   }
