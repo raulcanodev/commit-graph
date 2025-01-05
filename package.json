@@ -1,6 +1,6 @@
 {
   "name": "@raulcanodev/react-github-dots",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React component that generates contribution/commit visualization graphs similar to GitHub contributions.",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
