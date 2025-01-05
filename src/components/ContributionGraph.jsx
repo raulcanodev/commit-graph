@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
-// import { styles } from '../styles/contributionGraph';
 import { getColorForDots } from '../utils/colorDots';
 import '../styles/styles.css'
 
