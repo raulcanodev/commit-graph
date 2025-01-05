@@ -8,7 +8,7 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 ![SCR-20250105-oixx](https://github.com/user-attachments/assets/e0ce5e34-a9a3-4029-95d4-415e16ac7443)
 
 
-## ✨ What's Cool?
+## ✨ About this package
 
 - 📊 Beautiful GitHub-style contribution visualization
 - 🌓 Seamless light and dark mode support
@@ -47,8 +47,8 @@ Here's what you can tweak:
 | `username` | string | required | Your GitHub username |
 | `token` | string | required | Your GitHub access token |
 | `theme` | 'light' \| 'dark' | 'light' | Pick your style |
-| `customColorScheme` | object | null | Want custom colors? Go wild! |
-| `loadingComponent` | ReactNode | null | Custom loading state? Sure! |
+| `customColorScheme` | object | null | Custom colors |
+| `loadingComponent` | ReactNode | null | Custom loading state |
 
 ### 🎨 Customize The Dot Colors
 
