@@ -5,6 +5,9 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 ![npm version](https://img.shields.io/npm/v/@raulcanodev/react-github-dots)
 ![license](https://img.shields.io/npm/l/@raulcanodev/react-github-dots)
 
+![SCR-20250105-oixx](https://github.com/user-attachments/assets/e0ce5e34-a9a3-4029-95d4-415e16ac7443)
+
+
 ## ✨ What's Cool?
 
 - 📊 Beautiful GitHub-style contribution visualization
