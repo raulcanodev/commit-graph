@@ -10,7 +10,6 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 
 ![SCR-20250105-oixx](https://github.com/user-attachments/assets/e0ce5e34-a9a3-4029-95d4-415e16ac7443)
 
-
 ## ✨ About this package
 
 - 📊 Beautiful GitHub-style contribution visualization
@@ -26,7 +25,8 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 ```bash
 npm install @raulcanodev/react-github-dots
 ```
-2. Within your react app:
+
+2. Within your React app:
 ```jsx
 import { ContributionGraph } from '@raulcanodev/react-github-dots';
 
@@ -36,6 +36,22 @@ function App() {
       username="your-github-username"
       token="your-github-token"
       theme="dark" // or "light"
+    />
+  );
+}
+```
+
+For Next.js 13+ (App Router), add the client directive:
+```jsx
+'use client';
+import { ContributionGraph } from '@raulcanodev/react-github-dots';
+
+export default function Page() {
+  return (
+    <ContributionGraph 
+      username="your-github-username"
+      token="your-github-token"
+      theme="dark"
     />
   );
 }
