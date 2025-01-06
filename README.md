@@ -17,6 +17,7 @@ Hey! 👋 This is a React component that creates the GitHub's green dots contrib
 - 🎨 Make it yours with custom color schemes
 - 🔄 Real-time GitHub data at your fingertips
 - 📱 Looks great on any screen size
+- ⚡️ Smart caching for optimal performance
 
 ## 🚀 Getting Started
 
@@ -36,6 +37,7 @@ function App() {
       username="your-github-username"
       token="your-github-token"
       theme="dark" // or "light"
+      cacheTime="8h" // Cache data for 8 hours
     />
   );
 }
@@ -52,6 +54,7 @@ export default function Page() {
       username="your-github-username"
       token="your-github-token"
       theme="dark"
+      cacheTime="1d"
     />
   );
 }
@@ -68,6 +71,7 @@ Here's what you can tweak:
 | `theme` | 'light' \| 'dark' | 'dark' | Pick your style |
 | `customColorScheme` | object | null | Custom colors |
 | `loadingComponent` | ReactNode | null | Custom loading state |
+| `cacheTime` | false \| '2h' \| '8h' \| '1d' | '1d' | Control data caching duration |
 
 ### 🎨 Customize The Dot Colors
 
@@ -84,6 +88,40 @@ Want your own color scheme? Here's how:
     3: '#ff0000', // 7-9 contributions
     4: '#990000'  // 10+ contributions
   }}
+/>
+```
+
+### ⚡️ Cache Control
+
+Optimize performance with smart caching:
+
+```jsx
+// Disable caching - always fetch fresh data
+<ContributionGraph 
+  username="your-github-username"
+  token="your-github-token"
+  cacheTime={false}
+/>
+
+// Cache for 2 hours
+<ContributionGraph 
+  username="your-github-username"
+  token="your-github-token"
+  cacheTime="2h"
+/>
+
+// Cache for 8 hours
+<ContributionGraph 
+  username="your-github-username"
+  token="your-github-token"
+  cacheTime="8h"
+/>
+
+// Cache for 1 day (default)
+<ContributionGraph 
+  username="your-github-username"
+  token="your-github-token"
+  cacheTime="1d"
 />
 ```
 

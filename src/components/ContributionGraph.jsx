@@ -10,7 +10,7 @@ const ContributionGraph = ({
   theme = 'dark',
   customColorScheme,
   loadingComponent = "",
-  cacheTime = 24 * 60 * 60 * 1000 // Default to 24 hours in milliseconds
+  cacheTime = '1d' // Default to 1 day, can be false | '2h' | '8h' | '1d'
 }) => {
   const [contributions, setContributions] = React.useState([]);
   const [loading, setLoading] = React.useState(true);

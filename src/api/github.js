@@ -20,16 +20,29 @@ const CONTRIBUTIONS_QUERY = `
   }
 `;
 
+const parseCacheTime = (cacheTime) => {
+  if (cacheTime === false) return 0;
+  
+  const timeMap = {
+    '2h': 2 * 60 * 60 * 1000,    // 2 hours in milliseconds
+    '8h': 8 * 60 * 60 * 1000,    // 8 hours in milliseconds
+    '1d': 24 * 60 * 60 * 1000,   // 1 day in milliseconds
+  };
+
+  return timeMap[cacheTime] || timeMap['1d']; // Default to 1 day if invalid value
+};
+
 const isCacheValid = (cachedData, cacheTime) => {
-  if (!cachedData) return false;
+  if (!cachedData || cacheTime === false) return false;
 
   const { timestamp } = cachedData;
   if (!timestamp) return false;
 
   const now = new Date().getTime();
   const cacheAge = now - timestamp;
+  const maxAge = parseCacheTime(cacheTime);
   
-  return cacheAge < cacheTime;
+  return cacheAge < maxAge;
 };
 
 const getCachedData = (username) => {
@@ -58,7 +71,7 @@ const setCachedData = (username, data) => {
   }
 };
 
-export const fetchGithubContributions = async (username, token, cacheTime = 24 * 60 * 60 * 1000) => {
+export const fetchGithubContributions = async (username, token, cacheTime = '1d') => {
   if (!username) {
     throw new Error('Please provide the Github username');
   }
@@ -67,13 +80,15 @@ export const fetchGithubContributions = async (username, token, cacheTime = 24 *
     throw new Error('Please provide the Github personal token');
   }
 
-  // Check cache first
-  const cachedData = getCachedData(username);
-  if (cachedData && isCacheValid(cachedData, cacheTime)) {
-    return cachedData.data;
+  // Check cache first if caching is enabled
+  if (cacheTime !== false) {
+    const cachedData = getCachedData(username);
+    if (cachedData && isCacheValid(cachedData, cacheTime)) {
+      return cachedData.data;
+    }
   }
 
-  // If cache is invalid or missing, fetch fresh data
+  // If cache is invalid or disabled, fetch fresh data
   const response = await fetch(GITHUB_API_URL, {
     method: 'POST',
     headers: {
@@ -101,8 +116,10 @@ export const fetchGithubContributions = async (username, token, cacheTime = 24 *
     throw new Error('No contribution data found');
   }
 
-  // Cache the new data
-  setCachedData(username, contributionData);
+  // Cache the new data if caching is enabled
+  if (cacheTime !== false) {
+    setCachedData(username, contributionData);
+  }
 
   return contributionData;
 };
