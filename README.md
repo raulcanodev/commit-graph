@@ -65,7 +65,7 @@ Here's what you can tweak:
 |------|------|---------|-------------|
 | `username` | string | required | Your GitHub username |
 | `token` | string | required | Your GitHub access token |
-| `theme` | 'light' \| 'dark' | 'light' | Pick your style |
+| `theme` | 'light' \| 'dark' | 'dark' | Pick your style |
 | `customColorScheme` | object | null | Custom colors |
 | `loadingComponent` | ReactNode | null | Custom loading state |
 
