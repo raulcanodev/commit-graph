@@ -2,14 +2,15 @@ import * as React from 'react';
 import { themes } from '../constants/themes';
 import { fetchGithubContributions } from '../api/github';
 import { getColorForDots } from '../utils/colorDots';
-import '../styles/styles.css'
+import '../styles/styles.css';
 
 const ContributionGraph = ({
   username,
   token,
   theme = 'dark',
   customColorScheme,
-  loadingComponent = ""
+  loadingComponent = "",
+  cacheTime = 24 * 60 * 60 * 1000 // Default to 24 hours in milliseconds
 }) => {
   const [contributions, setContributions] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -21,7 +22,7 @@ const ContributionGraph = ({
   React.useEffect(() => {
     const getContributions = async () => {
       try {
-        const data = await fetchGithubContributions(username, token);
+        const data = await fetchGithubContributions(username, token, cacheTime);
         setContributions(data);
         setLoading(false);
       } catch (err) {
@@ -32,7 +33,7 @@ const ContributionGraph = ({
     };
 
     getContributions();
-  }, [username, token]);
+  }, [username, token, cacheTime]);
 
   if (loading) {
     return loadingComponent || null;
