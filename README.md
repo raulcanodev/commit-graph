@@ -28,7 +28,7 @@ npm install @raulcanodev/react-github-dots
 
 2. Within your React app:
 ```jsx
-import { ContributionGraph } from '@raulcanodev/react-github-dots';
+import ContributionGraph from '@raulcanodev/react-github-dots';
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
 For Next.js 13+ (App Router), add the client directive:
 ```jsx
 'use client';
-import { ContributionGraph } from '@raulcanodev/react-github-dots';
+import ContributionGraph from '@raulcanodev/react-github-dots';
 
 export default function Page() {
   return (
@@ -130,7 +130,7 @@ npm link @raulcanodev/react-github-dots
 3. In your App.jsx, import and use:
 
 ```jsx
-import { ContributionGraph } from '@raulcanodev/react-github-dots';
+import ContributionGraph from '@raulcanodev/react-github-dots';
 ```
 
 ### 🔄 Development Flow
