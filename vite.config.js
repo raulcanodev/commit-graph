@@ -19,6 +19,7 @@ export default defineConfig(({ command }) => {
     ],
     build: {
       lib: {
+        watch: {},
         entry: resolve(__dirname, 'src/index.js'),
         name: "ReactGithubDots",
         formats: ['es', 'umd'],
