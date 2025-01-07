@@ -8,7 +8,8 @@
   width: fit-content;
   display: flex;
   justify-content: flex-start;
-  padding: 0.5rem
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .contribution-wrapper {
@@ -36,6 +37,7 @@
   aspect-ratio: 1;
 }
 
+/* Adjust for tablets and larger screens */
 @media (min-width: 768px) {
   .contribution-wrapper {
     gap: 3px;
@@ -48,6 +50,7 @@
   }
 }
 
+/* Adjust for larger screens like desktops */
 @media (min-width: 1024px) {
   .contribution-wrapper {
     gap: 4px;
@@ -60,8 +63,11 @@
   }
 }
 
-/* Add smaller border-radius for very small screens */
+/* Adjust for very small screens like mobile */
 @media (max-width: 480px) {
+  .contribution-graph {
+    padding: 0.25rem; /* Reduce padding on mobile */
+  }
   .contribution-square {
     border-radius: 0.5px;
   }
