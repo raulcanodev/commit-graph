@@ -37,10 +37,10 @@
 /* Adjust for tablets and larger screens */
 @media (min-width: 768px) {
   .contribution-wrapper {
-    gap: 3px;
+    gap: 4px;
   }
   .contribution-row {
-    gap: 3px;
+    gap: 4px;
   }
   .contribution-square {
     border-radius: 2px;
@@ -66,6 +66,6 @@
     padding: 0.25rem; /* Reduce padding on mobile */
   }
   .contribution-square {
-    border-radius: 0.5px;
+    border-radius: 1.2px;
   }
 }
