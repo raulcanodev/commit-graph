@@ -1,9 +1,10 @@
 .contribution-container {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 
 .contribution-graph {
-  width: fit-content;
+  width: fit-content; /* Dont touch, otherwise the bg width can deform */
   display: flex;
   justify-content: flex-start;
   padding: 0.5rem;
