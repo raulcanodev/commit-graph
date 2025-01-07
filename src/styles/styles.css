@@ -2,10 +2,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 0.5rem;
 }
 
 .contribution-graph {
-  width: fit-content;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   padding: 0.5rem;
@@ -13,62 +14,63 @@
 }
 
 .contribution-wrapper {
+  width: 100%;
   display: inline-flex;
   flex-direction: column;
-  gap: 2px;
-  width: fit-content;
+  gap: 3px;
 }
 
 .contribution-row {
   display: flex;
-  gap: 2px;
+  gap: 3px;
+  width: 100%;
 }
 
 .contribution-square {
-  width: calc((100vw - 16px) / 55);
-  height: calc((100vw - 16px) / 55);
-  min-width: 4px;
-  min-height: 4px;
-  max-width: 12px;
-  max-height: 12px;
-  /* Scale border-radius with square size */
-  border-radius: 1px;
-  transition: background-color 0.2s ease;
+  flex: 1;
   aspect-ratio: 1;
+  min-width: 0;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
 }
 
 /* Adjust for tablets and larger screens */
 @media (min-width: 768px) {
   .contribution-wrapper {
-    gap: 3px;
+    gap: 4px;
   }
   .contribution-row {
-    gap: 3px;
+    gap: 4px;
   }
   .contribution-square {
-    border-radius: 1.5px;
+    border-radius: 3px;
+    max-width: 12px;
+    max-height: 12px;
   }
 }
 
 /* Adjust for larger screens like desktops */
 @media (min-width: 1024px) {
   .contribution-wrapper {
-    gap: 4px;
+    gap: 5px;
   }
   .contribution-row {
-    gap: 4px;
+    gap: 5px;
   }
   .contribution-square {
-    border-radius: 2px;
+    border-radius: 4px;
   }
 }
 
 /* Adjust for very small screens like mobile */
 @media (max-width: 480px) {
+  .contribution-container {
+    padding: 0.25rem;
+  }
   .contribution-graph {
-    padding: 0.25rem; /* Reduce padding on mobile */
+    padding: 0.25rem;
   }
   .contribution-square {
-    border-radius: 0.5px;
+    border-radius: 2px;
   }
 }
