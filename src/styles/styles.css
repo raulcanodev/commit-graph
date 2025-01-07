@@ -4,6 +4,9 @@
 }
 
 .contribution-graph {
+  --num-columns: 53;
+  --num-gaps: 52;
+  --padding: 16px;
   width: fit-content; /* Dont touch, otherwise the bg width can deform */
   display: flex;
   justify-content: flex-start;
@@ -24,8 +27,8 @@
 }
 
 .contribution-square {
-  width: calc((100vw - 165px) / 55);
-  height: calc((100vw - 165px) / 55);
+  width: calc((100vw - var(--padding)) / (var(--num-columns) + var(--num-gaps)));
+  height: calc((100vw - var(--padding)) / (var(--num-columns) + var(--num-gaps)));
   min-width: 4px;
   min-height: 4px;
   max-width: 12px;
