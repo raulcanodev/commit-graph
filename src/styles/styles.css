@@ -5,7 +5,7 @@
 
 .contribution-graph {
   --num-columns: 53;
-  --num-gaps: 52;
+  --num-gaps: 41; /* 41 - 52 */
   --padding: 16px;
   width: fit-content; /* Dont touch, otherwise the bg width can deform */
   display: flex;
