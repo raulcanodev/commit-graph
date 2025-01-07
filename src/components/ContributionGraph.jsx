@@ -9,8 +9,8 @@ const ContributionGraph = ({
   token,
   theme = 'dark',
   customColorScheme,
-  loadingComponent = "",
-  cacheTime = '1d' // Default to 1 day, can be false | '2h' | '8h' | '1d'
+  loadingComponent = '',
+  cacheTime = '1d', // Default to 1 day, can be false | '2h' | '8h' | '1d'
 }) => {
   const [contributions, setContributions] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -38,33 +38,51 @@ const ContributionGraph = ({
   if (loading) {
     return loadingComponent || null;
   }
-  
+
   if (error) {
     return <div style={{ color: currentTheme.error }}>{error}</div>;
   }
 
   const days = Array(7).fill(null);
-  const transposedData = days.map((_, dayIndex) => 
-    (contributions.weeks || []).map(week => 
-      week.contributionDays.find(day => new Date(day.date).getDay() === dayIndex) || null
-    ).filter(Boolean)
+  const transposedData = days.map((_, dayIndex) =>
+    (contributions.weeks || [])
+      .map(
+        (week) =>
+          week.contributionDays.find(
+            (day) => new Date(day.date).getDay() === dayIndex
+          ) || null
+      )
+      .filter(Boolean)
   );
 
   return (
-    <div className="contribution-graph" style={{ backgroundColor: currentTheme.background }}>
-      <div className="contribution-wrapper">
-        {transposedData.map((row, rowIndex) => (
-          <div key={rowIndex} className="contribution-row">
-            {row.map((day, dayIndex) => (
-              <div
-                key={`${rowIndex}-${dayIndex}`}
-                className="contribution-square"
-                style={{ backgroundColor: getColorForDots(day?.contributionCount || 0, colorScheme) }}
-                title={day ? `${day.date}: ${day.contributionCount} contributions` : ''}
-              />
-            ))}
-          </div>
-        ))}
+    <div className="contribution-container">
+      <div
+        className="contribution-graph"
+        style={{ backgroundColor: currentTheme.background }}>
+        <div className="contribution-wrapper">
+          {transposedData.map((row, rowIndex) => (
+            <div key={rowIndex} className="contribution-row">
+              {row.map((day, dayIndex) => (
+                <div
+                  key={`${rowIndex}-${dayIndex}`}
+                  className="contribution-square"
+                  style={{
+                    backgroundColor: getColorForDots(
+                      day?.contributionCount || 0,
+                      colorScheme
+                    ),
+                  }}
+                  title={
+                    day
+                      ? `${day.date}: ${day.contributionCount} contributions`
+                      : ''
+                  }
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

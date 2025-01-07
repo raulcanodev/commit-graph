@@ -1,8 +1,12 @@
+.contribution-container {
+  display: inline-block;
+}
+
 .contribution-graph {
   --num-columns: 53; /* Number of weeks */
   --num-gaps: 52;    /* Number of gaps between columns */
   --padding: 16px;
-  width: 100%;
+  width: fit-content;
   padding: 8px;
   border-radius: 6px;
   display: flex;
