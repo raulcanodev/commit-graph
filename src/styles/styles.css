@@ -1,9 +1,10 @@
 .contribution-container {
-  display: inline-block;
+  width: 100%;
+  overflow: hidden; /* Prevent scrolling */
 }
 
 .contribution-graph {
-  width: fit-content;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   padding: 0.5rem;
@@ -13,60 +14,55 @@
 .contribution-wrapper {
   display: inline-flex;
   flex-direction: column;
-  gap: 3px;
-  width: fit-content;
+  gap: 2px;
+  width: 100%;
 }
 
 .contribution-row {
   display: flex;
-  gap: 3px;
+  gap: 2px;
+  width: 100%;
 }
 
 .contribution-square {
-  width: calc((100vw - 16px) / 55);
-  height: calc((100vw - 16px) / 55);
-  min-width: 4px;
-  min-height: 4px;
-  max-width: 12px;
-  max-height: 12px;
-  /* Scale border-radius with square size */
-  border-radius: 2px;
+  /* Calculate size to ensure 55 squares fit horizontally with gaps */
+  width: calc((100% - (54 * 2px)) / 55);
+  height: calc((100% - (54 * 2px)) / 55);
+  min-width: 2px;
+  min-height: 2px;
+  max-width: 10px;
+  max-height: 10px;
+  border-radius: 4px;
   transition: background-color 0.2s ease;
   aspect-ratio: 1;
 }
 
-/* Adjust for tablets and larger screens */
+/* Tablet and larger screens */
 @media (min-width: 768px) {
   .contribution-wrapper {
-    gap: 3px;
+    gap: 2px;
   }
   .contribution-row {
-    gap: 3px;
+    gap: 2px;
   }
   .contribution-square {
-    border-radius: 1.5px;
+    min-width: 3px;
+    min-height: 3px;
+    border-radius: 3px;
   }
 }
 
-/* Adjust for larger screens like desktops */
+/* Desktop screens */
 @media (min-width: 1024px) {
   .contribution-wrapper {
-    gap: 4px;
+    gap: 3px;
   }
   .contribution-row {
-    gap: 4px;
+    gap: 3px;
   }
   .contribution-square {
+    min-width: 4px;
+    min-height: 4px;
     border-radius: 2px;
-  }
-}
-
-/* Adjust for very small screens like mobile */
-@media (max-width: 480px) {
-  .contribution-graph {
-    padding: 0.25rem; /* Reduce padding on mobile */
-  }
-  .contribution-square {
-    border-radius: 0.5px;
   }
 }
