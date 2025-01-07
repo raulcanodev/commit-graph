@@ -1,7 +1,5 @@
 .contribution-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  display: inline-block;
 }
 
 .contribution-graph {
@@ -15,13 +13,13 @@
 .contribution-wrapper {
   display: inline-flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
   width: fit-content;
 }
 
 .contribution-row {
   display: flex;
-  gap: 2px;
+  gap: 3px;
 }
 
 .contribution-square {
@@ -32,7 +30,7 @@
   max-width: 12px;
   max-height: 12px;
   /* Scale border-radius with square size */
-  border-radius: 1px;
+  border-radius: 2px;
   transition: background-color 0.2s ease;
   aspect-ratio: 1;
 }
