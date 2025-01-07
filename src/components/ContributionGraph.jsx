@@ -64,9 +64,8 @@ const ContributionGraph = ({
           {transposedData.map((row, rowIndex) => (
             <div key={rowIndex} className="contribution-row">
               {row.map((day, dayIndex) => (
-                <div
+                <div className="contribution-square"
                   key={`${rowIndex}-${dayIndex}`}
-                  className="contribution-square"
                   style={{
                     backgroundColor: getColorForDots(
                       day?.contributionCount || 0,
