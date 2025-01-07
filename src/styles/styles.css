@@ -1,6 +1,4 @@
 .contribution-container {
-  --num-squares: 55; /* Number of squares horizontally */
-  --padding: 165px; /* Horizontal padding */
   display: inline-block;
 }
 
@@ -25,8 +23,8 @@
 }
 
 .contribution-square {
-  width: calc((100vw - var(--num-squares)) / var(--num-squares));
-  height: calc((100vw - var(--num-squares)) / var(--num-squares));
+  width: calc((100vw - 165px) / 55);
+  height: calc((100vw - 165px) / 55);
   min-width: 4px;
   min-height: 4px;
   max-width: 12px;
