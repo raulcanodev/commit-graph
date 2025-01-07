@@ -1,7 +1,6 @@
---num-squares: 55; /* Number of squares horizontally */
---padding: 165px; /* Horizontal padding */
-
 .contribution-container {
+  --num-squares: 55; /* Number of squares horizontally */
+  --padding: 165px; /* Horizontal padding */
   display: inline-block;
 }
 
@@ -33,7 +32,7 @@
   max-width: 12px;
   max-height: 12px;
   /* Scale border-radius with square size */
-  border-radius: 4px;
+  border-radius: 2.3px;
   transition: background-color 0.2s ease;
 }
 
