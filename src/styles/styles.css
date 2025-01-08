@@ -1,75 +1,68 @@
 .contribution-container {
   display: flex;
   justify-content: center;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .contribution-graph {
   --num-columns: 53;
-  --num-gaps: 41; /* 41 - 52 */
-  --padding: 16px;
-  width: fit-content; /* Dont touch, otherwise the bg width can deform */
+  --num-gaps: 52;
+  --base-padding: 16px;
+  --square-gap: 3px;
+  width: fit-content;
   display: flex;
   justify-content: flex-start;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: var(--base-padding);
 }
 
 .contribution-wrapper {
   display: inline-flex;
   flex-direction: column;
-  gap: 3px;
+  gap: var(--square-gap);
   width: fit-content;
 }
 
 .contribution-row {
   display: flex;
-  gap: 3px;
+  gap: var(--square-gap);
 }
 
 .contribution-square {
-  width: calc((100vw - var(--padding)) / (var(--num-columns) + var(--num-gaps)));
-  height: calc((100vw - var(--padding)) / (var(--num-columns) + var(--num-gaps)));
-  min-width: 4px;
-  min-height: 4px;
-  max-width: 12px;
-  max-height: 12px;
-  /* Scale border-radius with square size */
-  border-radius: 2.3px;
+  --square-size: clamp(
+    4px, /* minimum size */
+    calc((100vw - (2 * var(--base-padding))) / (var(--num-columns) + var(--num-gaps))),
+    12px /* maximum size */
+  );
+  width: var(--square-size);
+  height: var(--square-size);
+  border-radius: calc(var(--square-size) * 0.2);
   transition: background-color 0.2s ease;
 }
 
-/* Adjust for tablets and larger screens */
-@media (min-width: 768px) {
-  .contribution-wrapper {
-    gap: 4px;
-  }
-  .contribution-row {
-    gap: 4px;
-  }
-  .contribution-square {
-    border-radius: 2px;
-  }
-}
-
-/* Adjust for larger screens like desktops */
-@media (min-width: 1024px) {
-  .contribution-wrapper {
-    gap: 4px;
-  }
-  .contribution-row {
-    gap: 4px;
-  }
-  .contribution-square {
-    border-radius: 2px;
-  }
-}
-
-/* Adjust for very small screens like mobile */
+/* Mobile adjustments */
 @media (max-width: 480px) {
   .contribution-graph {
-    padding: 0.25rem; /* Reduce padding on mobile */
+    --base-padding: 8px;
+    --square-gap: 2px;
+    --num-gaps: 41; /* Reduce gaps for mobile */
   }
-  .contribution-square {
-    border-radius: 1.2px;
+}
+
+/* Tablet adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+  .contribution-graph {
+    --base-padding: 12px;
+    --square-gap: 3px;
+    --num-gaps: 46;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .contribution-graph {
+    --base-padding: 16px;
+    --square-gap: 4px;
+    --num-gaps: 52;
   }
 }
